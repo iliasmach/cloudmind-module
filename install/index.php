@@ -1,14 +1,14 @@
 <?php
+	IncludeModuleLangFile(__FILE__);
+	use Bitrix\Main\IO;
 	use Bitrix\Main\ModuleManager;
 	use Bitrix\Main\UrlRewriter;
-	use Bitrix\Main\IO;
 	
 	if (class_exists("cloudmind_main"))
 		return;
-	/**
-	 * Class cloudmind_main
-	 */
-	class cloudmind_main extends CModule {
+	
+	class cloudmind_main extends CModule
+	{
 		public $MODULE_ID = "cloudmind.main";
 		public $MODULE_VERSION;
 		public $MODULE_VERSION_DATE;
@@ -19,17 +19,19 @@
 		
 		function __construct()
 		{
-			$arModuleVersion = array();
+			$arModuleVersion = [];
 			$path = str_replace("\\", "/", __FILE__);
 			$path = substr($path, 0, strlen($path) - strlen("/index.php"));
-			require($path."/version.php");
+			require($path . "/version.php");
 			
-				$this->MODULE_VERSION = $arModuleVersion["VERSION"];
-				$this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
+			$this->MODULE_VERSION = $arModuleVersion["VERSION"];
+			$this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
 			
-			$this->MODULE_NAME = "Пустой модуль";
-			$this->MODULE_DESCRIPTION = "Это пустышка модуля";
+			$this->MODULE_NAME = GetMessage("CLOUD_MIND_MODULE_NAME");
+			$this->MODULE_DESCRIPTION = GetMessage("CLOUD_MIND_MODULE_DESCRIPTION");
 		}
+		
+		
 		public function DoInstall()
 		{
 			global $DOCUMENT_ROOT, $APPLICATION;
@@ -38,6 +40,7 @@
 			
 			return true;
 		}
+		
 		public function DoUninstall()
 		{
 			global $DOCUMENT_ROOT, $APPLICATION;
