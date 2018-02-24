@@ -3,6 +3,7 @@
 	
 	use Bitrix\Main\Config\Option;
 	use \CloudMind\Redirector\Redirector;
+	use CloudMind\Redirector\RedirectorRule_Mappings;
 	
 	
 	/**
@@ -36,9 +37,17 @@
 			$this->_config = $config;
 			
 			// Создаем редиректы
-			if(isset($config['redirects']) && !empty($config['redirects'])) {
+			if(isset($config['redirects']['rules']) && !empty($config['redirects']['rules'])) {
 				$this->_redirector = new Redirector($config['redirects']);
 			}
+			// Поставить отображения для редиректов
+			if($config['redirects']['enabledMappings']) {
+				$this->_redirector->AddRule('mappings', new RedirectorRule_Mappings());
+			}
+		}
+		
+		protected function setRedirects() {
+		
 		}
 		
 		/**
@@ -52,6 +61,10 @@
 			}
 			
 			return $this->_redirector;
+		}
+		
+		public function getAdminMenu() {
+		
 		}
 		
 		
