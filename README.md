@@ -5,27 +5,19 @@
  
 
 ```PHP
-    global $CM_SITE;
-	
-	$config = [
-		'events'    => [],
-		'options'   => [],
-		/**
-		Массив для настроек редиректов.
-		
-		**enabledMappings** - Использовать ли отображения для переадресации, если true, 
-            то в правила будет включен класс RedirectorRule_Mappings
-            */
-         
-		'redirects' => [
-			'enabledMappings' => true, 
-			// Массив для правил переадресации
-			'rules' => [
-				['works', new RedirectorRule_IBlockElement()],
-			],
-		],
-	];
-	
-	$CM_SITE = new \CloudMind\WebSite($config);
-```
+global $CM_SITE;
+    	
+$config = [
+    'events' => [],
+    'options' => [],
+    'redirects' => [
+    	 'enabledMappings' => true,
+    	 'rules' => [
+    	    ['works', new RedirectorRule_IBlockElement()],
+    	],
+    ],
+];
+    	
+$CM_SITE = new \CloudMind\WebSite($config);
+   ```
 
