@@ -39,33 +39,20 @@
 			
 			$this->initOptions();
 			
+			CopyDirFiles(dirname(__FILE__) . "/admin/", $_SERVER['DOCUMENT_ROOT'] . "/bitrix/admin/");
+			
 			RegisterModule($this->MODULE_ID);
 			
 			return true;
 		}
 		
-		protected function bindEvents() {
-		
-		}
-		
-		protected function initOptions() {
+		protected function initOptions()
+		{
 			Option::set('cloudmind.main', 'site_phone', '8 (xxx) xxx xx xx');
 			Option::set('cloudmind.main', 'site_address', 'г. Москва');
 			Option::set('cloudmind.main', 'site_email', 'mail@domain.ru');
 			Option::set('cloudmind.main', 'metrika_id', '');
 			Option::set('cloudmind.main', 'google_analytics_id', '');
-		}
-		
-		protected function unsetOptions() {
-			Option::delete('cloudmind.main', 'site_phone');
-			Option::delete('cloudmind.main', 'site_address');
-			Option::delete('cloudmind.main', 'site_email');
-			Option::delete('cloudmind.main', 'metrika_id');
-			Option::delete('cloudmind.main', 'google_analytics_id');
-		}
-		
-		protected function unbindEvents() {
-		
 		}
 		
 		public function DoUninstall()
@@ -77,5 +64,24 @@
 			UnRegisterModule($this->MODULE_ID);
 			
 			return true;
+		}
+		
+		protected function unsetOptions()
+		{
+			Option::delete('cloudmind.main', 'site_phone');
+			Option::delete('cloudmind.main', 'site_address');
+			Option::delete('cloudmind.main', 'site_email');
+			Option::delete('cloudmind.main', 'metrika_id');
+			Option::delete('cloudmind.main', 'google_analytics_id');
+		}
+		
+		protected function bindEvents()
+		{
+		
+		}
+		
+		protected function unbindEvents()
+		{
+		
 		}
 	}

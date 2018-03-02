@@ -2,6 +2,7 @@
 	namespace CloudMind;
 	
 	use Bitrix\Main\Config\Option;
+	use CloudMind\Admin\AdminMenu;
 	use \CloudMind\Redirector\Redirector;
 	use CloudMind\Redirector\RedirectorRule_Mappings;
 	
@@ -32,6 +33,8 @@
 		protected $targetMyComRetarget;
 		
 		protected $_redirector;
+		protected $_eventManager;
+		protected $_adminMenu;
 		
 		function __construct($config) {
 			$this->_config = $config;
@@ -40,10 +43,15 @@
 			if(isset($config['redirects']['rules']) && !empty($config['redirects']['rules'])) {
 				$this->_redirector = new Redirector($config['redirects']);
 			}
+			
 			// Поставить отображения для редиректов
 			if($config['redirects']['enabledMappings']) {
 				$this->_redirector->AddRule('mappings', new RedirectorRule_Mappings());
 			}
+			
+			$this->_redirector->Redirect();
+			
+			$this->getAdminMenu();
 		}
 		
 		protected function setRedirects() {
@@ -64,7 +72,7 @@
 		}
 		
 		public function getAdminMenu() {
-		
+			$this->getRedirector()->getAdminMenu();
 		}
 		
 		

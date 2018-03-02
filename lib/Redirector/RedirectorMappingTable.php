@@ -8,7 +8,7 @@
 	 * Class RedirectorMapping
 	 * @package CloudMind\Redirector
 	 */
-	class RedirectorMapping extends Entity\DataManager
+	class RedirectorMappingTable extends Entity\DataManager
 	{
 		/**
 		 * @return string название таблицы в БД, с которой связана данная сущность
