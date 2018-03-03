@@ -7,6 +7,7 @@
 	 */
 	
 	namespace CloudMind\Redirector;
+	use CloudMind\Admin\AdminMenu;
 	
 	/**
 	 * Class RedirectorRule_Mappings
@@ -39,13 +40,13 @@
 			return $this->redirectUrl;
 		}
 		
-		public function getAdminMenu()
+		public function afterAddToRedirector()
 		{
-			return [
+			AdminMenu::addMenuItem([
 				'parent_menu' => 'global_menu_services',
 				'sort' => 100,
 				'url' => 'redirector_mappings.php',
 				'text' => 'Переадресации',
-			];
+			]);
 		}
 	}

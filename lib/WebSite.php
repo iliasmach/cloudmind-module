@@ -36,6 +36,8 @@
 		protected $_eventManager;
 		protected $_adminMenu;
 		
+		protected $_services = [];
+		
 		function __construct($config) {
 			$this->_config = $config;
 			
@@ -50,11 +52,9 @@
 			}
 			
 			$this->_redirector->Redirect();
-			
-			$this->getAdminMenu();
 		}
 		
-		protected function setRedirects() {
+		public function initServices() {
 		
 		}
 		
@@ -69,10 +69,6 @@
 			}
 			
 			return $this->_redirector;
-		}
-		
-		public function getAdminMenu() {
-			$this->getRedirector()->getAdminMenu();
 		}
 		
 		

@@ -24,6 +24,7 @@
 			return [
 				new Entity\IntegerField("ID", [
 					'primary' => true,
+					'autocomplete' => true
 				]),
 				new Entity\StringField("FROM", [
 					"required" => true,

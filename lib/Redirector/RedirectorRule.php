@@ -19,7 +19,6 @@
 		protected $sCurrentUrl = '';
 		protected $arMatches = [];
 		
-		protected $redirector;
 		
 		public function CheckPath($path)
 		{
@@ -37,19 +36,14 @@
 		
 		abstract public function GetRedirectUrl();
 		
-		public function setRedirector(Redirector $redirector)
-		{
-			$this->redirector = $redirector;
-		}
-		
 		public function beforeAddToRedirector($redirector)
 		{
-			
+			return true;
 		}
 		
 		public function afterAddToRedirector($redirector)
 		{
-		
+			return true;
 		}
 		
 		public function getAdminMenu() {
