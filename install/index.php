@@ -35,7 +35,7 @@
 		
 		public function DoInstall()
 		{
-			global $DOCUMENT_ROOT, $APPLICATION;
+			global $DOCUMENT_ROOT, $APPLICATION, $DB;
 			
 			$this->initOptions();
 			

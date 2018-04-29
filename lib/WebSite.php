@@ -42,7 +42,8 @@
 			$this->_config = $config;
 			
 			// Создаем редиректы
-			if(isset($config['redirects']['rules']) && !empty($config['redirects']['rules'])) {
+			if( (isset($config['redirects']['rules']) && !empty($config['redirects']['rules']))
+			|| $config['redirects']['enabledMappings']) {
 				$this->_redirector = new Redirector($config['redirects']);
 			}
 			
