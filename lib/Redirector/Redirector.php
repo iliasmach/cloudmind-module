@@ -26,8 +26,9 @@
 		function __construct($config = [])
 		{
 			if (is_array($config) && !empty($config)) {
+			
 				foreach ($config['rules'] as $configLine) {
-					if ($configLine[0] != null && $configLine[2] !== null) {
+					if ($configLine[0] != null && $configLine[1] !== null) {
 						$this->AddRule($configLine[0], $configLine[1]);
 					}
 				}
@@ -42,12 +43,31 @@
 		 */
 		public function AddRule($name, RedirectorRule $rule)
 		{
+			//AddMessage2Log($name);
+			
 			if ($rule !== null && !empty($name)) {
 				if($rule->beforeAddToRedirector($this)) {
 					$this->_arRules[$name] = $rule;
 					$this->_arRules[$name]->afterAddToRedirector($this);
 				}
 			}
+		}
+		
+		
+		public function AddRuleToEnd($name, RedirectorRule $rule) {
+			
+		}
+		
+		public function AddRuleToStart($name, RedirectorRule $rule) {
+		
+		}
+		
+		public function AddRuleBefore($nameBefore, $name, RedirectorRule $rule) {
+		
+		}
+		
+		public function AddRuleAfter($nameAfter, $name, RedirectorRule $rule) {
+		
 		}
 		
 		/**
@@ -73,7 +93,7 @@
 			
 			foreach ($this->_arRules as $regExp => $rule) {
 				$uri = $_SERVER['REQUEST_URI'];
-				
+				AddMessage2Log($regExp);
 				if ($rule->CheckPath($uri)) {
 					LocalRedirect($rule->GetRedirectUrl($uri));
 				}

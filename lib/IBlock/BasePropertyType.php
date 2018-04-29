@@ -1,10 +1,4 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: ilasmahianov
-	 * Date: 02.03.2018
-	 * Time: 17:38
-	 */
 	
 	namespace CloudMind\IBlock;
 	
@@ -16,11 +10,34 @@
 	 */
 	abstract class BasePropertyType
 	{
-		public static $arProperties  = [
+		protected static $property_type = 'S';
+		protected static $user_type = "";
+		protected static $description = '';
 		
-				'PROPERTY_TYPE'        => 'S',
-				'USER_TYPE'            => 'CM_TREE_EDITOR',
-				'DESCRIPTION'          => "Редактор дерева",
+		abstract public static function ConvertToDB($arProperty, $value);
+		
+		abstract public static function GetPropertyFieldHtml($arProperty, $arValue, $strHTMLControlName);
+		
+		abstract public static function GetAdminListViewHTML();
+		
+		abstract public static function GetPublicViewHTML();
+		
+		abstract public static function GetPublicEditHTML();
+		
+		abstract public static function GetPublicFilterHTML();
+		
+		abstract public static function GetAdminFilterHTML();
+		
+		abstract public static function GetSettingsHTML();
+		
+		abstract public static function PrepareSettings();
+		
+		public static function GetUserTypeDescription()
+		{
+			return [
+				'PROPERTY_TYPE'        => static::$property_type,
+				'USER_TYPE'            => static::$user_type,
+				'DESCRIPTION'          => static::$description,
 				'ConvertToDB'          => [__CLASS__, 'ConvertToDB'],
 				'GetPropertyFieldHtml' => [__CLASS__, 'GetPropertyFieldHtml'],
 				'GetAdminListViewHTML' => [__CLASS__, 'GetAdminListViewHTML'],
@@ -30,24 +47,11 @@
 				'GetAdminFilterHTML'   => [__CLASS__, 'GetAdminFilterHTML'],
 				'GetSettingsHTML'      => [__CLASS__, 'GetSettingsHTML'],
 				'PrepareSettings'      => [__CLASS__, 'PrepareSettings'],
-			
-		];
-		
-		abstract public static function ConvertToDB();
-		abstract public static function GetPropertyFieldHtml();
-		abstract public static function GetAdminListViewHTML();
-		abstract public static function GetPublicViewHTML();
-		abstract public static function GetPublicEditHTML();
-		abstract public static function GetPublicFilterHTML();
-		abstract public static function GetAdminFilterHTML();
-		abstract public static function GetSettingsHTML();
-		abstract public static function PrepareSettings();
-		
-		public static function GetUserTypeDescription() {
-			return static::$arProperties;
+			];
 		}
 		
-		public static function RegisterPropertyType() {
+		public static function RegisterPropertyType()
+		{
 		
 		}
 	}

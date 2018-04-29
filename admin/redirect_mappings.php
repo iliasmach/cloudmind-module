@@ -78,6 +78,8 @@
 	<script type='text/babel' src="/local/modules/cloudmind.main/assets/js/redirect_mapping.js"
 	        charset='utf-8'></script>
 	
+	<link rel="stylesheet" href="/local/modules/cloudmind.main/assets/css/redirect_mapping.css">
+	
 	<div id="RedirectMappings">
 		<RedirectMappings/>
 	</div>
