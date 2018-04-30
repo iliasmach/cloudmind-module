@@ -45,7 +45,7 @@
 			
 			return true;
 		}
-		
+		 
 		protected function initOptions()
 		{
 			Option::set('cloudmind.main', 'site_phone', '8 (xxx) xxx xx xx');
