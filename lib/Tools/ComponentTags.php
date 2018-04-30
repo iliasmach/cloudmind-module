@@ -8,14 +8,25 @@
 	
 	namespace CloudMind\Tools;
 	
+	//TODO Добавить наборы настроек для компонентов
+	//TODO Добавить обработку тэгов для включаемых областей
+	//TODO Доавбить обработку тэгов для настроек
 	
-	class ComponentTags
+	/**
+	 * Class ComponentTags
+	 * @package CloudMind\Tools
+	 */
+	class ComponentTags implements IBaseService
 	{
 		protected static $cache = [];
+	
+		public function init($config) {
+		
+		}
 		
 		public static function OnEndBuffer(&$content) {
 			global $APPLICATION;
-			//echo $APPLICATION->GetCurUri();
+			
 			if(strpos($APPLICATION->GetCurUri(), "/bitrix/admin") === 0) {
 				return;
 			}
@@ -57,8 +68,6 @@
 						if(isset($params['COMPONENT_TEMPLATE'])) {
 							$template = $params['COMPONENT_TEMPLATE'];
 						}
-						
-						
 						
 						ob_start();
 						$APPLICATION->IncludeComponent($componentName, $template, $params);

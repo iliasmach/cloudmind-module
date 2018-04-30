@@ -72,5 +72,15 @@
 			return $this->_redirector;
 		}
 		
+		/**
+		 * Функция проверяет, находимся ли мы в админке
+		 *
+		 * @return bool
+		 */
+		public static function IsInAdmin() {
+			global $APPLICATION;
+			
+			return strpos($APPLICATION->GetCurUri(), "/bitrix/admin") === 0;
+		}
 		
 	}
