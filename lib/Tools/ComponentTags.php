@@ -16,8 +16,7 @@
 	 * Class ComponentTags
 	 * @package CloudMind\Tools
 	 */
-	class ComponentTags implements IBaseService
-	{
+	class ComponentTags {
 		protected static $cache = [];
 	
 		public function init($config) {

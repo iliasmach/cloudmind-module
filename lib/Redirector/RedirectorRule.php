@@ -26,8 +26,7 @@
 			foreach ($this->arUrls as $url => $handler) {
 				
 				preg_match_all($url, $path, $arMatches);
-				AddMessage2Log($url);
-				AddMessage2Log($path);
+				
 				if (isset($arMatches[0]) && !empty($arMatches[0])) {
 					$this->sCurrentUrl = $url;
 					$this->arMatches = $arMatches;
