@@ -14,6 +14,9 @@
 	
 	CModule::AddAutoloadClasses("cloudmind.main", $arClasses);
 	
+	if(!defined("CM_PATH")) {
+		define("CM_PATH", dirname(__FILE__));
+	}
 	
 	
 	

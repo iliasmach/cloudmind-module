@@ -59,6 +59,8 @@
 		{
 			global $DOCUMENT_ROOT, $APPLICATION;
 			
+			DeleteDirFiles(dirname(__FILE__) . "/admin/", $_SERVER['DOCUMENT_ROOT'] . "/bitrix/admin/");
+			
 			$this->unsetOptions();
 			
 			UnRegisterModule($this->MODULE_ID);
